@@ -120,13 +120,13 @@
         
         <span class="attr">标签：/
         
+        <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+        <span>/</span>
+        
         <a class="tag" href="/tags/#运维" title="运维">运维</a>
         <span>/</span>
         
         <a class="tag" href="/tags/#CentOS" title="CentOS">CentOS</a>
-        <span>/</span>
-        
-        <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
         <span>/</span>
         
         
@@ -146,7 +146,7 @@
 <p>启动vsftpd服务：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# systemctl start vsftpd.service</span><br></pre></td></tr></table></figure>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>对于从未使用过vsftpd的Linux菜鸟来说，在配置之前，简单了解一下vsftpd服务的过程相当有必要的。安装完默认情况下是开启匿名登录的，对应的是 <strong>/var/ftp</strong> 目录，这时只要服务启动了，就可以直接连上FTP了。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pcvcdeiMac:~ pcvc$ ftp 192.168.0.117</span><br><span class="line">Connected to 192.168.0.117</span><br><span class="line">220(vsFTPd 3.0.2)</span><br><span class="line">Name(192.168.0.117:pcvc): ftp</span><br><span class="line">331 Please specify the password.</span><br><span class="line">Password:</span><br><span class="line">230 Login successful.</span><br><span class="line">Remote system type is UNIX.</span><br><span class="line">Using binary mode to transfer files.</span><br><span class="line"><span class="meta">ftp&gt;</span><span class="bash"> ls</span></span><br><span class="line">229 Entering Extended Passive Mode(|||37296|).</span><br><span class="line">150 Here cones the directory listing.</span><br><span class="line">drwxr-xr-x   20    0       6 Jun 10 2018 pub</span><br><span class="line">226 Directory send OK.</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pcvcdeiMac:~ pcvc$ ftp 192.168.0.117</span><br><span class="line">Connected to 192.168.0.117</span><br><span class="line">220(vsFTPd 3.0.2)</span><br><span class="line">Name(192.168.0.117:pcvc): ftp</span><br><span class="line">331 Please specify the password.</span><br><span class="line">Password:</span><br><span class="line">230 Login successful.</span><br><span class="line">Remote system type is UNIX.</span><br><span class="line">Using binary mode to transfer files.</span><br><span class="line"><span class="meta">ftp&gt;</span> ls</span><br><span class="line">229 Entering Extended Passive Mode(|||37296|).</span><br><span class="line">150 Here cones the directory listing.</span><br><span class="line">drwxr-xr-x   20    0       6 Jun 10 2018 pub</span><br><span class="line">226 Directory send OK.</span><br></pre></td></tr></table></figure>
 <p>然后，一般情况下我们都是按分配的用户去访问各自的目录，vsftpd的用户分为系统用户和虚拟用户，系统用户也就是系统实际存在的Linux用户，而虚拟用户则是存在于配置文件里面的。系统用户方式比较简单，创建系统用户，确保用户能对FTP目录进行读写就可以了。以下是创建普通Linux用户，详见 <strong>useradd</strong> 命令。其实，从以上连接ftp信息可以看出，有的系统已默认创建了名为ftp的用户了。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# useradd -g root -M -d /ver/www/html -s /sbin/nologin ftpuser</span><br><span class="line">[root@localhost ~]# passwd ftpuser</span><br><span class="line">[root@localhost ~]# 输入密码</span><br></pre></td></tr></table></figure>
 <p>把 <strong>/var/www/html</strong> 的所有权给ftpuser.root</p>
@@ -175,24 +175,38 @@
 <p>添加新 ftp 用户</p>
 <ol>
 <li><p>编辑<strong>vuser_passwd.txt</strong>文件，添加用户名和密码：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">cd</span> /etc/vsftpd</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> vi vuser_passwd.txt</span></span><br><span class="line"></span><br><span class="line">new_ftp_user</span><br><span class="line">new_ftp_user_password</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> cd /etc/vsftpd</span><br><span class="line"><span class="meta">#</span> vi vuser_passwd.txt</span><br><span class="line"></span><br><span class="line">new_ftp_user</span><br><span class="line">new_ftp_user_password</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>重新生成<strong>vuser_passwd.db</strong>文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> db_load -T -t <span class="built_in">hash</span> -f vuser_passwd.txt vuser_passwd.db</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> db_load -T -t hash -f vuser_passwd.txt vuser_passwd.db</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>创建用户配置文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">cd</span> vuser_conf</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> vi new_ftp_user</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> cd vuser_conf</span><br><span class="line"><span class="meta">#</span> vi new_ftp_user</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>配置文件内容：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">local_root=/new/ftp/directory</span><br><span class="line">write_enable=YES</span><br><span class="line">anon_umask=022</span><br><span class="line">anon_world_readable_only=NO</span><br><span class="line">anon_upload_enable=YES</span><br><span class="line">anon_mkdir_write_enable=YES</span><br><span class="line">anon_other_write_enable=YES</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>重启服务：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> systemctl restart vsftpd.service</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> systemctl restart vsftpd.service</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 
         
-        <div id="comment-container">
+        <div id="lv-container" data-id="city" data-uid="MTAyMC80MDQ3My8xNzAwMA==">
+            <script type="text/javascript">
+               (function(d, s) {
+                   var j, e = d.getElementsByTagName(s)[0];
+            
+                   if (typeof LivereTower === 'function') { return; }
+            
+                   j = d.createElement(s);
+                   j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                   j.async = true;
+            
+                   e.parentNode.insertBefore(j, e);
+               })(document, 'script');
+            </script>
+            <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
         </div>
     </div>
 </div>
