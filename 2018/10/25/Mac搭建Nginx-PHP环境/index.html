@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="技术宅">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Mac搭建Nginx+PHP环境 - Ehum Blog | 阳光宅男
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 阳光宅男_游戏_吃瓜_撸代码 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ehum0923</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nginx安装起来"><span class="toc-text">Nginx安装起来</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#搞定php-fpm"><span class="toc-text">搞定php-fpm</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意："><span class="toc-text">注意：</span></a>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 阳光宅男_游戏_吃瓜_撸代码 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Mac搭建Nginx+PHP环境
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-10-25 17:05:25</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Mac" title="Mac">Mac</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#运维" title="运维">运维</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#坑" title="坑">坑</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><blockquote>
+<p>本人前几天已经发布一篇Mac搭建MAMP环境的文章，如有需要请移步2018-09-29文章，这篇仅记录暂停Apache服务以及配置Nginx以及php-fpm中遇到的<strong>坑</strong>。</p>
+</blockquote>
+<p><img src="http://ovc09yp5f.bkt.clouddn.com/what-is-nginx.png" alt="兄die，LOGO色非常适合你"></p>
+<h4 id="Nginx安装起来"><a href="#Nginx安装起来" class="headerlink" title="Nginx安装起来"></a>Nginx安装起来</h4><p>要安装Nginx首先向各位介绍一下Mac中的管理软件，<strong>homebrew</strong>，wget啦，nginx啦，openssl啦，ffmpeg啦，都是靠它装机并管理的，首先没有homebrew的安装一下homebrew</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span><br></pre></td></tr></table></figure>
+<p>骚候30秒</p>
+<p>然后等待下载安装</p>
+<p>安装成功了，我们可以使用brew来安装nginx了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure>
+<p>OK，nginx服务监听在8080端口，进入浏览器输入 <strong>localhost:8080</strong> 如图即安装成功：</p>
+<p><img src="http://ovc09yp5f.bkt.clouddn.com/nginx.jpg" alt=""></p>
+<blockquote>
+<ol>
+<li>/usr/local/etc/nginx/nginx.conf (配置文件目录)</li>
+<li>/usr/local/Cellar/nginx/1.12.1(核心安装目录，启动文件在该目录的bin下面，欢迎页在html下面)</li>
+<li>/usr/local/var/www(服务器默认路径)</li>
+</ol>
+</blockquote>
+<p>好，暂且先把Nginx放一边，要使用Nginx解析PHP语言，需要一个php-fpm，而我们的Mac自带了PHP&amp;php-fpm，我们来看一下</p>
+<h4 id="搞定php-fpm"><a href="#搞定php-fpm" class="headerlink" title="搞定php-fpm"></a>搞定php-fpm</h4><p>首先试着开启php-fpm</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mac@macdeMacBook-Pro:~$	sudo php-fpm</span><br><span class="line">[25-Oct-2018 22:21:52] ERROR: failed to open configuration file '/private/etc/php-fpm.conf': No such file or directory (2)</span><br><span class="line">[25-Oct-2018 22:21:52] ERROR: failed to load configuration file '/private/etc/php-fpm.conf'</span><br><span class="line">[25-Oct-2018 22:21:52] ERROR: FPM initialization failed</span><br></pre></td></tr></table></figure>
+<p>果然没有那么顺利，看一下报错内容告诉我了我们位于<strong><em>/private/etc/php-fpm.conf</em></strong>文件打开失败，我这一瞅，这个位置也没有php-fpm的配置文件，不过还好，它提供给我们一个模板文件，也就是<strong><em>php-fpm.conf.default</em></strong>，复制出来一份命名为<strong><em>php-fpm.conf</em></strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mac@macdeMacBook-Pro:~$	sudo cp /private/etc/php-fpm.conf.default /private/etc/php-fpm.conf</span><br></pre></td></tr></table></figure>
+<p>来，我们再来一次，</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mac@macdeMacBook-Pro:~$	sudo php-fpm</span><br><span class="line">[25-Oct-2018 22:27:11] ERROR: failed to open error_log (/usr/var/log/php-fpm.log): No such file or directory (2)</span><br><span class="line">[25-Oct-2018 22:27:11] ERROR: failed to post process the configuration</span><br><span class="line">[25-Oct-2018 22:27:11] ERROR: FPM initialization failed</span><br></pre></td></tr></table></figure>
+<p><strong>NICE！</strong>继续分析，这个报错告诉我们没打开<strong><em>/usr/var/log/php-fpm.log</em></strong>文件，我又一瞅，没有这个目录啊！！！那进入配置文件改个位置吧。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mac@macdeMacBook-Pro:~$	sudo vim /etc/php-fpm.conf</span><br><span class="line"></span><br><span class="line">; Error log file</span><br><span class="line"> 20 ; If it's set to "syslog", log is sent to syslogd instead of being written</span><br><span class="line"> 21 ; into a local file.</span><br><span class="line"> 22 ; Note: the default prefix is /usr/local</span><br><span class="line"> 23 ; Default Value: log/php-fpm.log</span><br><span class="line"> 24 error_log = /usr/local/var/log/php-fpm.log</span><br></pre></td></tr></table></figure>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p>这是一个大坑，我经历了一个上午，都在排查错误，结果只是没有去掉error_log前面的分号！！！切记切记，这TM也是个注释呢还！！！</p>
+<p><img src="http://ovc09yp5f.bkt.clouddn.com/keng.jpg" alt=""></p>
+<p>保存好，重新再启动一次~</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mac@macdeMacBook-Pro:~$	sudo php-fpm</span><br><span class="line">Password:</span><br><span class="line">mac@macdeMacBook-Pro:~$</span><br></pre></td></tr></table></figure>
+<p><strong>Oh~</strong></p>
+<p>多么地激动人心！</p>
+<p>对了，我们还没有动Nginx的配置文件，php-fpm解决了，该Nginx了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">         listen       80;</span><br><span class="line">         server_name  localhost;</span><br><span class="line"></span><br><span class="line">         #charset koi8-r;</span><br><span class="line"></span><br><span class="line">         #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">         location / &#123;</span><br><span class="line">             root   html;</span><br><span class="line">             index  index.html index.htm index.php;</span><br><span class="line">         &#125;</span><br><span class="line">       </span><br><span class="line">       </span><br><span class="line">location ~ \.php$ &#123;</span><br><span class="line">             root           html;</span><br><span class="line">             fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">             fastcgi_index  index.php;</span><br><span class="line">             fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</span><br><span class="line">             include        fastcgi_params;</span><br><span class="line">             fastcgi_intercept_errors    on;</span><br><span class="line">         &#125;</span><br></pre></td></tr></table></figure>
+<p>这里注意<strong><em>fastcgi_param</em></strong>，之前使用SCRIPT_FILENAME  /scripts$fastcgi_script_name;打开网页显示File not found. 改成<strong><em>SCRIPT_FILENAME    $document_root$fastcgi_script_name;</em></strong>就好了。另外php-fpm运行的用户与nginx不一致，也会产生错误，我们需要修改下nginx.conf的user配置</p>
+<blockquote>
+<p>user    root;</p>
+</blockquote>
+<p>同时也需要将php-fpm的运行用户改成root：</p>
+<blockquote>
+<p>; Unix user/group of processes<br>; Note: The user is mandatory. If the group is not set, the default user’s group<br>;       will be used.<br>user = root<br>group = root</p>
+</blockquote>
+<p>配置修改后，重启服务，问题就解决了~</p>
+
+        
+        <div id="lv-container" data-id="city" data-uid="MTAyMC80MDQ3My8xNzAwMA==">
+            <script type="text/javascript">
+               (function(d, s) {
+                   var j, e = d.getElementsByTagName(s)[0];
+            
+                   if (typeof LivereTower === 'function') { return; }
+            
+                   j = d.createElement(s);
+                   j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                   j.async = true;
+            
+                   e.parentNode.insertBefore(j, e);
+               })(document, 'script');
+            </script>
+            <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+        </div>
+    </div>
+</div>
+        
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/Han-E-13-72">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/ehum@sina.com">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/EHUM">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</html>
