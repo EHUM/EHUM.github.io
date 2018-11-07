@@ -133,17 +133,17 @@
 </span>
     </div>
     <div class="post-content ">
-        <p><img src="http://ovc09yp5f.bkt.clouddn.com/apache.jpeg" alt=""></p>
+        <p><img src="http://go-colorful.com/apache.jpeg" alt=""></p>
 <p>安装httpd后httpd虽然启动但有错误显示</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AH00557: httpd: apr_sockaddr_info_get() failed for hero</span><br><span class="line">AH00558: httpd: Could not reliably determine the server1's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message</span><br><span class="line">httpd (pid 902) already running</span><br></pre></td></tr></table></figure>
 <p>根据报错提示只需要找到httpd.conf把#ServerName <a href="http://www.example.com:80修改为ServerName" target="_blank" rel="noopener">www.example.com:80修改为ServerName</a> localhost:80即可。</p>
-<p><img src="http://ovc09yp5f.bkt.clouddn.com/apachestart.jpg" alt=""></p>
+<p><img src="http://go-colorful.com/apachestart.jpg" alt=""></p>
 <p>its OK！</p>
 <p>PS：新遇到一个破烂坑，是对于Unix文件执行权限的疏忽，直接在命令行执行</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apachectl -k start</span><br></pre></td></tr></table></figure>
 <p>会报个无法打开logs文件的错，搜了会儿找到了答案：这是由于直接执行是以普通用户身份执行httpd程序，而普通用户则无/private/var/log目录的写操作权限，若想正常使用，要么提权，要么sudo，我选择了sudo</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apachectl -k start</span><br><span class="line">/usr/sbin/apachectl -k start</span><br></pre></td></tr></table></figure>
-<p><img src="http://ovc09yp5f.bkt.clouddn.com/timg.jpeg" alt=""></p>
+<p><img src="http://go-colorful.com/timg.jpeg" alt=""></p>
 
         
         <div id="lv-container" data-id="city" data-uid="MTAyMC80MDQ3My8xNzAwMA==">
