@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="技术宅">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        IIS7拦截视频文件请求为哪般 - Ehum Blog | 阳光宅男
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 阳光宅男_游戏_吃瓜_撸代码 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ehum0923</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#启用IIS7播放MP4视频设置"><span class="toc-text">启用IIS7播放MP4视频设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网页加入HTML5-Video-播放-MP4、OGG、WebM"><span class="toc-text">网页加入HTML5 Video 播放 MP4、OGG、WebM</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTML5-Video标签的基本语法"><span class="toc-text">HTML5 Video标签的基本语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTML5-Video格式支持表"><span class="toc-text">HTML5 Video格式支持表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTML-lt-track-Element-字幕轨道"><span class="toc-text">HTML &lt;track&gt; Element 字幕轨道</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IIS服务器设置支持字幕"><span class="toc-text">IIS服务器设置支持字幕</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 阳光宅男_游戏_吃瓜_撸代码 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        IIS7拦截视频文件请求为哪般
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-11-07 16:44:17</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#运维" title="运维">运维</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#服务器" title="服务器">服务器</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <blockquote>
+<p>前端使用HTML5的Video标签插入视频文件，而在某些情况却遭遇404的待遇，就需要检查一下你的服务器是不是IIS了</p>
+</blockquote>
+<p><img src="http://go-colorful.com/h5video.jpg" alt=""></p>
+<h3 id="启用IIS7播放MP4视频设置"><a href="#启用IIS7播放MP4视频设置" class="headerlink" title="启用IIS7播放MP4视频设置"></a>启用IIS7播放MP4视频设置</h3><p>可以在站点配置文件中添加该标签声明支持MP4的MIME类型</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">system.webServer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">staticContent</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">mimeMap</span> <span class="attr">fileExtension</span>=<span class="string">".mp4"</span> <span class="attr">mimeType</span>=<span class="string">"video/mp4"</span> /&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">staticContent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">system.webServer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>也可以使用IIS客户端设置 </p>
+<p><img src="http://go-colorful.com/iismp4.jpg" alt="这样"></p>
+<p><img src="http://go-colorful.com/iismp42.jpg" alt="然后这样"></p>
+<p>点击确定(废话)就OK了。</p>
+<h3 id="网页加入HTML5-Video-播放-MP4、OGG、WebM"><a href="#网页加入HTML5-Video-播放-MP4、OGG、WebM" class="headerlink" title="网页加入HTML5 Video 播放 MP4、OGG、WebM"></a>网页加入HTML5 Video 播放 MP4、OGG、WebM</h3><p>目前多数浏览器都支持HTML5的H.264转码格式或WebM格式的视频。HTML5 Video能够设置视频长、宽、增加影片播放控制、是否自动播放、是否自动重复播放等功能，为网页交互提供了更多的可能，然鹅！</p>
+<p>不同浏览器所支持的影片格式不同(万恶)，使用Video标签建议提供两种以上格式才能自动根据浏览器判断播放，如果浏览器都没有支持播放，则提供代替方案(图片喽)</p>
+<h4 id="HTML5-Video标签的基本语法"><a href="#HTML5-Video标签的基本语法" class="headerlink" title="HTML5 Video标签的基本语法"></a>HTML5 Video标签的基本语法</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">preload</span> <span class="attr">controls</span> <span class="attr">loop</span> <span class="attr">poster</span>=<span class="string">"media/coFlow.png"</span> <span class="attr">width</span>=<span class="string">"720"</span> <span class="attr">height</span>=<span class="string">"480"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"media/coFlow.mp4"</span> <span class="attr">type</span>=<span class="string">"video/mp4"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"media/coFlow.ogv"</span> <span class="attr">type</span>=<span class="string">"video/ogg"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"media/coFlow.webm"</span> <span class="attr">type</span>=<span class="string">"video/web"</span> /&gt;</span></span><br><span class="line">	瀏覽器不支援 HTML 5 <span class="tag">&lt;<span class="name">video</span>&gt;</span> 標籤之影片格式播放。</span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>preload提前加载、autoplay自动播放、controls提供视频控制按钮、loop循环播放。控制项中如果同时使用autoplay和preload，则以autoplay属性为优先。poster图片会在无法播放视频时显示该图片(也算替代方案？？？)设定视频播放宽度width与高度height的属性，source src指定视频文件路径，type指定视频格式。就这些~</p>
+<h4 id="HTML5-Video格式支持表"><a href="#HTML5-Video格式支持表" class="headerlink" title="HTML5 Video格式支持表"></a>HTML5 Video格式支持表</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">浏览器</th>
+<th style="text-align:center">MPEG4</th>
+<th style="text-align:center">OGG</th>
+<th style="text-align:center">WebM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">FireFox 4.0</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">支持</td>
+</tr>
+<tr>
+<td style="text-align:center">Chrome 5.0</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">支持</td>
+</tr>
+<tr>
+<td style="text-align:center">Safari 3.0</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center">不支持</td>
+</tr>
+<tr>
+<td style="text-align:center">Opera 10.5</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">支持</td>
+</tr>
+<tr>
+<td style="text-align:center">IE 9</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center">不支持</td>
+</tr>
+</tbody>
+</table>
+<h4 id="HTML-lt-track-Element-字幕轨道"><a href="#HTML-lt-track-Element-字幕轨道" class="headerlink" title="HTML &lt;track> Element 字幕轨道"></a>HTML &lt;track> Element 字幕轨道</h4><p>网络视频文本轨道，简称为WebVTT，是一种用于标记文本轨道的文件格式。它与HTML5 \<track> 元素相结合，可给音频、视频等媒体资源添加字幕，标题和其它描述信息，并同步显示。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">WEBVTT</span><br><span class="line"></span><br><span class="line">00:00:01.878 --&gt; 00:00:05.334</span><br><span class="line">Enable IIS MIME to play MP4 movie settings</span><br><span class="line"></span><br><span class="line">00:00:08.608 --&gt; 00:00:15.296</span><br><span class="line">Add Video Playback Control &amp; Video Settings.</span><br></pre></td></tr></table></figure>
+<p>第一行必须是 WEBVTT 接着空行，接下来是一行时间范围加一行或多行字幕内容再加一行空行。</p>
+<p>时间格式为 HH:MM:SS.sss 时:分:秒.毫秒</p>
+<h4 id="IIS服务器设置支持字幕"><a href="#IIS服务器设置支持字幕" class="headerlink" title="IIS服务器设置支持字幕"></a>IIS服务器设置支持字幕</h4><p>WebVTT字幕文件的MIME类型是<strong>text/vtt</strong>，需要在IIS或者Apache等Web服务器中配置</p>
+<p><img src="http://go-colorful.com/iismp43.jpg" alt=""></p>
+<p><strong><em>接下来，使用H5的Video来制作更棒的Web吧</em></strong></p>
+
+        
+        <div id="lv-container" data-id="city" data-uid="MTAyMC80MDQ3My8xNzAwMA==">
+            <script type="text/javascript">
+               (function(d, s) {
+                   var j, e = d.getElementsByTagName(s)[0];
+            
+                   if (typeof LivereTower === 'function') { return; }
+            
+                   j = d.createElement(s);
+                   j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                   j.async = true;
+            
+                   e.parentNode.insertBefore(j, e);
+               })(document, 'script');
+            </script>
+            <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+        </div>
+    </div>
+</div>
+        
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/Han-E-13-72">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/ehum@sina.com">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/EHUM">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</html>
