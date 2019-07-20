@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-15T05:34:07.000Z</updated>
+  <updated>2019-07-20T01:20:31.105Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>不知不觉又断了四个月，坚持坚持~</title>
+    <link href="http://yoursite.com/2019/07/20/%E4%B8%8D%E7%9F%A5%E4%B8%8D%E8%A7%89%E5%8F%88%E6%96%AD%E4%BA%86%E5%9B%9B%E4%B8%AA%E6%9C%88%EF%BC%8C%E5%9D%9A%E6%8C%81%E5%9D%9A%E6%8C%81~/"/>
+    <id>http://yoursite.com/2019/07/20/不知不觉又断了四个月，坚持坚持~/</id>
+    <published>2019-07-20T01:22:17.000Z</published>
+    <updated>2019-07-20T01:20:31.105Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="继续下去的理由"><a href="#继续下去的理由" class="headerlink" title="继续下去的理由"></a>继续下去的理由</h2><p><strong>只要用自己的想法，选择重要的部分并活下去，你就是自己人生的主角。</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;继续下去的理由&quot;&gt;&lt;a href=&quot;#继续下去的理由&quot; class=&quot;headerlink&quot; title=&quot;继续下去的理由&quot;&gt;&lt;/a&gt;继续下去的理由&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;只要用自己的想法，选择重要的部分并活下去，你就是自己人生的主角。&lt;/strong&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="生活" scheme="http://yoursite.com/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+      <category term="日记" scheme="http://yoursite.com/tags/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>标准的微信分享API配置</title>
