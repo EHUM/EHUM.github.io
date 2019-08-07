@@ -139,7 +139,7 @@
         <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><blockquote>
 <p>本人前几天已经发布一篇Mac搭建MAMP环境的文章，如有需要请移步2018-09-29文章，这篇仅记录暂停Apache服务以及配置Nginx以及php-fpm中遇到的<strong>坑</strong>。</p>
 </blockquote>
-<p><img src="http://go-colorful.com/what-is-nginx.png" alt="兄die，LOGO色非常适合你"></p>
+<p><img src="http://cycling-life.com/what-is-nginx.png" alt="兄die，LOGO色非常适合你"></p>
 <h4 id="Nginx安装起来"><a href="#Nginx安装起来" class="headerlink" title="Nginx安装起来"></a>Nginx安装起来</h4><p>要安装Nginx首先向各位介绍一下Mac中的管理软件，<strong>homebrew</strong>，wget啦，nginx啦，openssl啦，ffmpeg啦，都是靠它装机并管理的，首先没有homebrew的安装一下homebrew</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span><br></pre></td></tr></table></figure>
 <p>骚候30秒</p>
@@ -147,7 +147,7 @@
 <p>安装成功了，我们可以使用brew来安装nginx了</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure>
 <p>OK，nginx服务监听在8080端口，进入浏览器输入 <strong>localhost:8080</strong> 如图即安装成功：</p>
-<p><img src="http://go-colorful.com/nginx.jpg" alt=""></p>
+<p><img src="http://cycling-life.com/nginx.jpg" alt=""></p>
 <blockquote>
 <ol>
 <li>/usr/local/etc/nginx/nginx.conf (配置文件目录)</li>
@@ -165,7 +165,7 @@
 <p><strong>NICE！</strong>继续分析，这个报错告诉我们没打开<strong><em>/usr/var/log/php-fpm.log</em></strong>文件，我又一瞅，没有这个目录啊！！！那进入配置文件改个位置吧。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mac@macdeMacBook-Pro:~$	sudo vim /etc/php-fpm.conf</span><br><span class="line"></span><br><span class="line">; Error log file</span><br><span class="line"> 20 ; If it's set to "syslog", log is sent to syslogd instead of being written</span><br><span class="line"> 21 ; into a local file.</span><br><span class="line"> 22 ; Note: the default prefix is /usr/local</span><br><span class="line"> 23 ; Default Value: log/php-fpm.log</span><br><span class="line"> 24 error_log = /usr/local/var/log/php-fpm.log</span><br></pre></td></tr></table></figure>
 <h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p>这是一个大坑，我经历了一个上午，都在排查错误，结果只是没有去掉error_log前面的分号！！！切记切记，这TM也是个注释呢还！！！</p>
-<p><img src="http://go-colorful.com/keng.jpg" alt=""></p>
+<p><img src="http://cycling-life.com/keng.jpg" alt=""></p>
 <p>保存好，重新再启动一次~</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mac@macdeMacBook-Pro:~$	sudo php-fpm</span><br><span class="line">Password:</span><br><span class="line">mac@macdeMacBook-Pro:~$</span><br></pre></td></tr></table></figure>
 <p><strong>Oh~</strong></p>

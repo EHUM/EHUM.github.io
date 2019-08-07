@@ -120,10 +120,10 @@
         
         <span class="attr">标签：/
         
-        <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+        <a class="tag" href="/tags/#运维" title="运维">运维</a>
         <span>/</span>
         
-        <a class="tag" href="/tags/#运维" title="运维">运维</a>
+        <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
         <span>/</span>
         
         <a class="tag" href="/tags/#CentOS" title="CentOS">CentOS</a>
@@ -139,7 +139,7 @@
         <h2 id="CentOS-给网卡添加第二个IP地址"><a href="#CentOS-给网卡添加第二个IP地址" class="headerlink" title="CentOS 给网卡添加第二个IP地址"></a>CentOS 给网卡添加第二个IP地址</h2><blockquote>
 <p>有的时候我们购买服务器需要申请多个IP，那么申请的IP该怎么添加进系统呢？</p>
 </blockquote>
-<p><img src="http://go-colorful.com/centos.jpeg" alt=""></p>
+<p><img src="http://cycling-life.com/centos.jpeg" alt=""></p>
 <p>在 /etc/sysconfig/network-scripts/ 中新建文件 ifcfg-eth0:<em> , </em>为数字序号，多个IP则依次增大。以 ifcfg-eth0:1 为例，建立文件 ifcfg-eth0:1</p>
 <p>仿照 /etc/sysconfig/network-scripts/ifcfg-eth0 文件，增加一个新增虚拟端口的文件 如：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#复制一份 ifcfg-eth0，重命名为 ifcfg-eth0:1</span></span><br><span class="line">cp /etc/sysconfg/network-scripts/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-eth0:<span class="number">1</span></span><br></pre></td></tr></table></figure>

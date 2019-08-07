@@ -136,12 +136,12 @@
         <blockquote>
 <p>前端使用HTML5的Video标签插入视频文件，而在某些情况却遭遇404的待遇，就需要检查一下你的服务器是不是IIS了</p>
 </blockquote>
-<p><img src="http://go-colorful.com/h5video.jpg" alt=""></p>
+<p><img src="http://cycling-life.com/h5video.jpg" alt=""></p>
 <h3 id="启用IIS7播放MP4视频设置"><a href="#启用IIS7播放MP4视频设置" class="headerlink" title="启用IIS7播放MP4视频设置"></a>启用IIS7播放MP4视频设置</h3><p>可以在站点配置文件中添加该标签声明支持MP4的MIME类型</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">system.webServer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">staticContent</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">mimeMap</span> <span class="attr">fileExtension</span>=<span class="string">".mp4"</span> <span class="attr">mimeType</span>=<span class="string">"video/mp4"</span> /&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">staticContent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">system.webServer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>也可以使用IIS客户端设置 </p>
-<p><img src="http://go-colorful.com/iismp4.jpg" alt="这样"></p>
-<p><img src="http://go-colorful.com/iismp42.jpg" alt="然后这样"></p>
+<p><img src="http://cycling-life.com/iismp4.jpg" alt="这样"></p>
+<p><img src="http://cycling-life.com/iismp42.jpg" alt="然后这样"></p>
 <p>点击确定(废话)就OK了。</p>
 <h3 id="网页加入HTML5-Video-播放-MP4、OGG、WebM"><a href="#网页加入HTML5-Video-播放-MP4、OGG、WebM" class="headerlink" title="网页加入HTML5 Video 播放 MP4、OGG、WebM"></a>网页加入HTML5 Video 播放 MP4、OGG、WebM</h3><p>目前多数浏览器都支持HTML5的H.264转码格式或WebM格式的视频。HTML5 Video能够设置视频长、宽、增加影片播放控制、是否自动播放、是否自动重复播放等功能，为网页交互提供了更多的可能，然鹅！</p>
 <p>不同浏览器所支持的影片格式不同(万恶)，使用Video标签建议提供两种以上格式才能自动根据浏览器判断播放，如果浏览器都没有支持播放，则提供代替方案(图片喽)</p>
@@ -194,7 +194,7 @@
 <p>第一行必须是 WEBVTT 接着空行，接下来是一行时间范围加一行或多行字幕内容再加一行空行。</p>
 <p>时间格式为 HH:MM:SS.sss 时:分:秒.毫秒</p>
 <h4 id="IIS服务器设置支持字幕"><a href="#IIS服务器设置支持字幕" class="headerlink" title="IIS服务器设置支持字幕"></a>IIS服务器设置支持字幕</h4><p>WebVTT字幕文件的MIME类型是<strong>text/vtt</strong>，需要在IIS或者Apache等Web服务器中配置</p>
-<p><img src="http://go-colorful.com/iismp43.jpg" alt=""></p>
+<p><img src="http://cycling-life.com/iismp43.jpg" alt=""></p>
 <p><strong><em>接下来，使用H5的Video来制作更棒的Web吧</em></strong></p>
 
         
