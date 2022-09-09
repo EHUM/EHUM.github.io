@@ -13,14 +13,16 @@
     
     <categories>
       
-      <category>-Bash</category>
+      <category>Bash</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>-命令行工具 -Git</tag>
+      <tag>命令行工具</tag>
+      
+      <tag>Git</tag>
       
     </tags>
     
@@ -38,16 +40,16 @@
     
     <categories>
       
-      <category>-Bash</category>
+      <category>Bash</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>Node.js</tag>
-      
       <tag>命令行工具</tag>
+      
+      <tag>Node.js</tag>
       
     </tags>
     
@@ -65,14 +67,14 @@
     
     <categories>
       
-      <category>-Bash</category>
+      <category>Bash</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>-命令行工具</tag>
+      <tag>命令行工具</tag>
       
     </tags>
     
