@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>安装Oh-my-zsh</title>
+    <link href="/2022/09/09/%E5%AE%89%E8%A3%85Oh-my-zsh/"/>
+    <url>/2022/09/09/%E5%AE%89%E8%A3%85Oh-my-zsh/</url>
+    
+    <content type="html"><![CDATA[<h1 id="安装Oh-my-zsh"><a href="#安装Oh-my-zsh" class="headerlink" title="安装Oh-my-zsh"></a>安装Oh-my-zsh</h1><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">export</span> <span class="hljs-attribute">REMOTE</span>=https://gitee.com/imirror/ohmyzsh.git<br>sh -c <span class="hljs-string">&quot;<span class="hljs-variable">$(curl -fsSL https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure><h6 id="更改Oh-my-zsh配置文件"><a href="#更改Oh-my-zsh配置文件" class="headerlink" title="更改Oh-my-zsh配置文件"></a>更改Oh-my-zsh配置文件</h6><p><code>vim ~/.zshrc</code></p><h6 id="刷新配置以生效"><a href="#刷新配置以生效" class="headerlink" title="刷新配置以生效"></a>刷新配置以生效</h6><p><code>sources ~/.zshrc</code></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>-Bash</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>-命令行工具</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2022/05/28/hello-world/"/>
+    <url>/2022/05/28/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
