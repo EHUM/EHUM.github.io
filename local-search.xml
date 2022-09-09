@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>brew安装Nodejs遇到的问题</title>
+    <link href="/2022/09/09/brew%E5%AE%89%E8%A3%85Nodejs%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <url>/2022/09/09/brew%E5%AE%89%E8%A3%85Nodejs%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h1 id="brew安装Nodejs遇到的问题"><a href="#brew安装Nodejs遇到的问题" class="headerlink" title="brew安装Nodejs遇到的问题"></a>brew安装Nodejs遇到的问题</h1><p>在M1芯片的Mac中安装Node.js与平时稍微有点不同，需要多加一行命令建立连接。</p><p>首先使用brew安装Node.js。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew search node<br><br>==&gt; Formulae<br>libbitcoin-node          node-build               node@12                  nodebrew<br>llnode                   node-sass                node@14 ✔                nodeenv<br>node                     node@10                  node_exporter            nodenv<br>==&gt; Casks<br>nodebox                                           nodeclipse<br><br>If you meant <span class="hljs-string">&quot;node&quot;</span> specifically:<br>It was migrated from homebrew/cask to homebrew/core.<br></code></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install node@14<br></code></pre></td></tr></table></figure><p>安装完成后在终端执行Node返回</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">zsh: <span class="hljs-built_in">command</span> not found: node<br></code></pre></td></tr></table></figure><p>我们加一条命令给Node建立链接</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew <span class="hljs-built_in">link</span> --overwrite --force node@14<br><br>Linking /opt/homebrew/Cellar/node@14/14.17.1... 3857 symlinks created.<br><br>If you need to have this software first <span class="hljs-keyword">in</span> your PATH instead consider running:<br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export PATH=&quot;/opt/homebrew/opt/node@14/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.zshrc<br></code></pre></td></tr></table></figure><p>看到下面这条返回结果，Node已经可以使用了。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>-Bash</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>-Node.js -命令行工具</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>安装Oh-my-zsh</title>
     <link href="/2022/09/09/%E5%AE%89%E8%A3%85Oh-my-zsh/"/>
     <url>/2022/09/09/%E5%AE%89%E8%A3%85Oh-my-zsh/</url>

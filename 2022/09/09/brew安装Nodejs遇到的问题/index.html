@@ -16,24 +16,22 @@
   <meta name="author" content="Ehum">
   <meta name="keywords" content="Blog博客">
   
-    <meta name="description" content="安装Oh-my-zsh12export REMOTE&#x3D;https:&#x2F;&#x2F;gitee.com&#x2F;imirror&#x2F;ohmyzsh.gitsh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;ohmyzsh&#x2F;ohmyzsh&#x2F;tools&#x2F;install.sh)&quot;  更改Oh-my-zsh配置文件vim ~&#x2F;.zshrc 刷新配置以生效sources">
+    <meta name="description" content="brew安装Nodejs遇到的问题在M1芯片的Mac中安装Node.js与平时稍微有点不同，需要多加一行命令建立连接。 首先使用brew安装Node.js。 1234567891011brew search node&#x3D;&#x3D;&gt; Formulaelibbitcoin-node          node-build               node@12                  no">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装Oh-my-zsh">
-<meta property="og:url" content="https://ehum.github.io/2022/09/09/%E5%AE%89%E8%A3%85Oh-my-zsh/index.html">
+<meta property="og:title" content="brew安装Nodejs遇到的问题">
+<meta property="og:url" content="https://ehum.github.io/2022/09/09/brew%E5%AE%89%E8%A3%85Nodejs%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Ehum的博客">
-<meta property="og:description" content="安装Oh-my-zsh12export REMOTE&#x3D;https:&#x2F;&#x2F;gitee.com&#x2F;imirror&#x2F;ohmyzsh.gitsh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;ohmyzsh&#x2F;ohmyzsh&#x2F;tools&#x2F;install.sh)&quot;  更改Oh-my-zsh配置文件vim ~&#x2F;.zshrc 刷新配置以生效sources">
+<meta property="og:description" content="brew安装Nodejs遇到的问题在M1芯片的Mac中安装Node.js与平时稍微有点不同，需要多加一行命令建立连接。 首先使用brew安装Node.js。 1234567891011brew search node&#x3D;&#x3D;&gt; Formulaelibbitcoin-node          node-build               node@12                  no">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://ehumblog.oss-cn-beijing.aliyuncs.com/ohmyzsh.png">
-<meta property="article:published_time" content="2022-09-09T02:40:29.000Z">
-<meta property="article:modified_time" content="2022-09-09T02:54:46.971Z">
+<meta property="article:published_time" content="2022-09-09T07:06:06.000Z">
+<meta property="article:modified_time" content="2022-09-09T07:08:05.967Z">
 <meta property="article:author" content="Ehum">
-<meta property="article:tag" content="-命令行工具">
+<meta property="article:tag" content="-Node.js -命令行工具">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://ehumblog.oss-cn-beijing.aliyuncs.com/ohmyzsh.png">
   
   
   
-  <title>安装Oh-my-zsh - Ehum的博客</title>
+  <title>brew安装Nodejs遇到的问题 - Ehum的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="安装Oh-my-zsh"></span>
+            <span id="subtitle" data-typed-text="brew安装Nodejs遇到的问题"></span>
           
         </div>
 
@@ -209,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-09-09 10:40" pubdate>
-          2022年9月9日 上午
+        <time datetime="2022-09-09 15:06" pubdate>
+          2022年9月9日 下午
         </time>
       </span>
     
@@ -221,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          199 字
+          690 字
         
       </span>
     
@@ -232,7 +230,7 @@
         
         
         
-          2 分钟
+          6 分钟
         
       </span>
     
@@ -270,15 +268,24 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">安装Oh-my-zsh</h1>
+            <h1 style="display: none">brew安装Nodejs遇到的问题</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="安装Oh-my-zsh"><a href="#安装Oh-my-zsh" class="headerlink" title="安装Oh-my-zsh"></a>安装Oh-my-zsh</h1><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">export</span> <span class="hljs-attribute">REMOTE</span>=https://gitee.com/imirror/ohmyzsh.git<br>sh -c <span class="hljs-string">&quot;<span class="hljs-variable">$(curl -fsSL https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="brew安装Nodejs遇到的问题"><a href="#brew安装Nodejs遇到的问题" class="headerlink" title="brew安装Nodejs遇到的问题"></a>brew安装Nodejs遇到的问题</h1><p>在M1芯片的Mac中安装Node.js与平时稍微有点不同，需要多加一行命令建立连接。</p>
+<p>首先使用brew安装Node.js。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew search node<br><br>==&gt; Formulae<br>libbitcoin-node          node-build               node@12                  nodebrew<br>llnode                   node-sass                node@14 ✔                nodeenv<br>node                     node@10                  node_exporter            nodenv<br>==&gt; Casks<br>nodebox                                           nodeclipse<br><br>If you meant <span class="hljs-string">&quot;node&quot;</span> specifically:<br>It was migrated from homebrew/cask to homebrew/core.<br></code></pre></td></tr></table></figure>
 
-<h6 id="更改Oh-my-zsh配置文件"><a href="#更改Oh-my-zsh配置文件" class="headerlink" title="更改Oh-my-zsh配置文件"></a>更改Oh-my-zsh配置文件</h6><p><code>vim ~/.zshrc</code></p>
-<h6 id="刷新配置以生效"><a href="#刷新配置以生效" class="headerlink" title="刷新配置以生效"></a>刷新配置以生效</h6><p><code>sources ~/.zshrc</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install node@14<br></code></pre></td></tr></table></figure>
+
+<p>安装完成后在终端执行Node返回</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">zsh: <span class="hljs-built_in">command</span> not found: node<br></code></pre></td></tr></table></figure>
+
+<p>我们加一条命令给Node建立链接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew <span class="hljs-built_in">link</span> --overwrite --force node@14<br><br>Linking /opt/homebrew/Cellar/node@14/14.17.1... 3857 symlinks created.<br><br>If you need to have this software first <span class="hljs-keyword">in</span> your PATH instead consider running:<br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export PATH=&quot;/opt/homebrew/opt/node@14/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.zshrc<br></code></pre></td></tr></table></figure>
+
+<p>看到下面这条返回结果，Node已经可以使用了。</p>
 
                 
               </div>
@@ -312,7 +319,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/">#-命令行工具</a>
+        <a href="/tags/Node-js-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/">#-Node.js -命令行工具</a>
       
     </div>
   
@@ -324,8 +331,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>安装Oh-my-zsh</div>
-      <div>https://ehum.github.io/2022/09/09/安装Oh-my-zsh/</div>
+      <div>brew安装Nodejs遇到的问题</div>
+      <div>https://ehum.github.io/2022/09/09/brew安装Nodejs遇到的问题/</div>
     </div>
     <div class="license-meta">
       
@@ -367,18 +374,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/09/09/brew%E5%AE%89%E8%A3%85Nodejs%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="brew安装Nodejs遇到的问题">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">brew安装Nodejs遇到的问题</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/28/hello-world/" title="Hello World">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2022/09/09/%E5%AE%89%E8%A3%85Oh-my-zsh/" title="安装Oh-my-zsh">
+                        <span class="hidden-mobile">安装Oh-my-zsh</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
